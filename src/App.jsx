@@ -11,14 +11,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Layout contains the Sidebar + top header */}
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="apartments" element={<Apartments />} />
           <Route path="tenants" element={<Tenants />} />
           <Route path="payments" element={<Payments />} />
           <Route path="maintenance" element={<Maintenance />} />
-          {/* Commercial removed */}
         </Route>
       </Routes>
     </BrowserRouter>
