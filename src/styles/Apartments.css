@@ -1,0 +1,332 @@
+.page-content {
+  padding: 2rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.apartments-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #033f63;
+  margin-bottom: 1.5rem;
+}
+
+/* Add Apartment Section */
+.add-apartment-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.add-apartment-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #016fb8;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.add-apartment-btn:hover {
+  background: #025b99;
+}
+
+.add-apartment-form {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.add-apartment-form input,
+.add-apartment-form select {
+  border: 1px solid #d1d5db;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  transition: 0.2s ease;
+}
+
+.add-apartment-form input:focus,
+.add-apartment-form select:focus {
+  border-color: #016fb8;
+  box-shadow: 0 0 0 2px #016fb833;
+}
+
+.save-btn {
+  background: #10b981;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  transition: 0.3s ease;
+  grid-column: span 2;
+}
+
+.save-btn:hover {
+  background: #059669;
+}
+
+/* Apartments Grid */
+.apartments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Apartment Card */
+.apartment-card {
+  position: relative;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+  border: 1px solid #e5e7eb;
+}
+
+.apartment-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.status-dot {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.status-vacant {
+  background: #16a34a;
+}
+.status-occupied {
+  background: #dc2626;
+}
+.status-unknown {
+  background: #9ca3af;
+}
+
+/* Apartment Header */
+.apartment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.icon-box {
+  background: #016fb81a;
+  color: #016fb8;
+  padding: 0.6rem;
+  border-radius: 0.75rem;
+}
+
+.apartment-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #033f63;
+}
+
+/* Details */
+.apartment-details {
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+}
+
+.apartment-details span {
+  font-weight: 600;
+  color: #111827;
+}
+
+.text-green {
+  color: #16a34a;
+}
+.text-red {
+  color: #dc2626;
+}
+
+/* Actions */
+.card-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.5rem;
+  transition: 0.3s ease;
+}
+
+.edit-btn:hover {
+  background: #3b82f6;
+  color: white;
+}
+
+.delete-btn:hover {
+  background: #ef4444;
+  color: white;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Modal backdrop */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Tenant modal container */
+.tenant-modal {
+  background: #fff;
+  padding: 2rem;
+  width: 400px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Modal header */
+.tenant-modal h3 {
+  margin-bottom: 1rem;
+  text-align: center;
+  font-size: 1.3rem;
+  color: #333;
+}
+
+/* Tenant form inputs */
+.tenant-form input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.tenant-form input:focus {
+  border-color: #4f46e5; /* Indigo-600 */
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+}
+
+/* Modal buttons container */
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+/* Save button */
+.save-btn {
+  flex: 1;
+  padding: 10px 0;
+  background-color: #4f46e5; /* Indigo-600 */
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.save-btn:hover {
+  background-color: #4338ca; /* Darker Indigo */
+}
+
+/* Cancel button */
+.cancel-btn {
+  flex: 1;
+  padding: 10px 0;
+  background-color: #e5e7eb; /* Gray-200 */
+  color: #111827; /* Gray-900 */
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #d1d5db; /* Gray-300 */
+}
+
+/* Fade in animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* Tenant modal inputs */
+.tenant-modal input,
+.tenant-modal select {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+/* Modal actions buttons side by side */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.save-btn {
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+}

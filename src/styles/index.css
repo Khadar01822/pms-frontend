@@ -1,0 +1,330 @@
+/* ---------- Base & Typography ---------- */
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', 'Arial', sans-serif;
+  background: #f0f6ff; /* overall page background */
+  color: #033f63;
+}
+
+/* ---------- App layout ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #e8f7ff;
+}
+
+/* ---------- Sidebar (fixed left) ---------- */
+.app-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg,#bfe9ff,#9ad7ff);
+  color: #033f63;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 20;
+  box-shadow: 2px 0 8px rgba(3,63,99,0.06);
+  transition: width .35s ease, transform .35s ease;
+  overflow: hidden;
+}
+
+/* more specific selector to increase specificity from (0,1,0) to (0,2,0) */
+.app-sidebar .sidebar-brand {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #01334a;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  white-space: nowrap;
+}
+
+/* nav + links */
+.sidebar-nav { display: flex; flex-direction: column; gap: 8px; }
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #0b3a55;
+  padding: 10px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 160ms ease;
+}
+.sidebar-link:hover { transform: translateX(6px); background: rgba(255,255,255,0.18); color:#012837; }
+.sidebar-link.active { background:#016fb8; color:#fff; box-shadow:0 6px 16px rgba(1,111,184,0.16); }
+.sidebar-icon { width:20px; height:20px; }
+
+/* collapsed sidebar (set .app-sidebar.collapsed on the element to collapse) */
+.app-sidebar.collapsed { width: 72px; }
+.app-sidebar.collapsed .sidebar-text { display: none; }
+.app-sidebar.collapsed .sidebar-brand { text-align: center; font-size: 1.1rem; }
+
+/* ---------- Main wrapper & topbar ---------- */
+.main-wrapper {
+  margin-left: 260px; /* matches sidebar width */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: margin-left .35s ease;
+}
+
+/* if sidebar is collapsed, also shift content */
+.app-sidebar.collapsed ~ .main-wrapper { margin-left: 72px; }
+
+/* topbar - hide if you don't want it (you said remove small dashboard white bar) */
+.topbar {
+  display: none; /* hidden by request; change to flex to show */
+  background: white;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(3,63,99,0.06);
+  display: flex;
+  align-items: center;
+}
+.topbar-title { margin: 0; font-size: 1.25rem; color: #033f63; }
+
+/* ---------- Page content ---------- */
+.page-content {
+  padding: 28px;
+  background: transparent;
+  min-height: calc(100vh);
+}
+
+/* ---------- Dashboard card styles ---------- */
+.cards-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(3,63,99,0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s;
+}
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 30px rgba(3,63,99,0.12);
+}
+.card .title { font-size: 1rem; color: #03455e; font-weight: 700; margin:0; }
+.card .value { font-size: 1.5rem; color: #016fb8; margin-top:8px; font-weight:800; }
+.card .icon-wrap { width:56px; height:56px; border-radius:999px; display:flex; align-items:center; justify-content:center; color:white; }
+
+/* color helpers (use on icon-wrap) */
+.bg-blue { background: #0ea5e9; }    /* example */
+.bg-green { background: #10b981; }
+.bg-yellow { background: #f59e0b; }
+.bg-red { background: #ef4444; }
+
+/* ---------- Chart container ---------- */
+.chart-card {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(3,63,99,0.06);
+  margin-top: 1.5rem;
+}
+
+/* ---------- Utility / small helpers ---------- */
+.hidden { display: none !important; }
+.center { display:flex; align-items:center; justify-content:center; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .app-sidebar { position: fixed; width: 220px; transform: translateX(0); }
+  .app-sidebar.collapsed { transform: translateX(-100%); width: 220px; } /* mobile hide */
+  .main-wrapper { margin-left: 220px; }
+}
+
+/* small animation helper */
+.fade-in { animation: fadeIn .35s ease both; }
+@keyframes fadeIn { from { opacity:0; transform: translateY(6px);} to { opacity:1; transform:none;} }
+
+/* ===================================================
+   🌆 SALAH APARTMENTS – PROFESSIONAL PAGE STYLING
+   =================================================== */
+
+/* Page Layout */
+.page-content {
+  padding: 2.5rem;
+  background: linear-gradient(180deg, #f8fbff 0%, #eef7ff 100%);
+  min-height: 100vh;
+  animation: fadeIn 0.5s ease-in-out;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header Section */
+.page-content h2 {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #033f63;
+  letter-spacing: 0.5px;
+}
+
+.page-content .header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* Add New Apartment Button */
+.page-content button {
+  background: linear-gradient(135deg, #016fb8, #0288d1);
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  outline: none;
+  border-radius: 10px;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(1, 111, 184, 0.25);
+  transition: all 0.3s ease;
+}
+
+.page-content button:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(135deg, #025b99, #0177c7);
+  box-shadow: 0 10px 24px rgba(1, 111, 184, 0.35);
+}
+
+/* Grid Layout */
+.apartments-grid {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.75rem;
+}
+
+/* Apartment Card */
+.apartment-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(3, 63, 99, 0.08);
+  box-shadow: 0 10px 20px rgba(3, 63, 99, 0.06);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.apartment-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 28px rgba(3, 63, 99, 0.15);
+  border-color: #bfe9ff;
+}
+
+/* Card Header */
+.apartment-card .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.apartment-card .title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.apartment-card .title h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #033f63;
+}
+
+.apartment-card .icon {
+  background: rgba(1, 111, 184, 0.1);
+  color: #016fb8;
+  padding: 0.75rem;
+  border-radius: 50%;
+}
+
+/* Card Details */
+.apartment-card p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  margin: 0.25rem 0;
+}
+
+.apartment-card span {
+  font-weight: 600;
+  color: #033f63;
+}
+
+.apartment-card .vacant {
+  color: #dc2626;
+}
+
+/* Hover accent glow */
+.apartment-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(to right, #016fb8, #0288d1);
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.apartment-card:hover::before {
+  opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .page-content {
+    padding: 1.75rem;
+  }
+
+  .page-content h2 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-content {
+    padding: 1.25rem;
+  }
+
+  .page-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .page-content button {
+    width: 100%;
+    justify-content: center;
+  }
+}

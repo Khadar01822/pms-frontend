@@ -1,0 +1,313 @@
+/* =============================
+   🌿 Maintenance Page Styles
+============================= */
+.maintenance-page {
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+/* ---------- Header ---------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-left h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.add-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #2563eb;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-weight: 500;
+}
+
+.add-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ---------- Tabs ---------- */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tab {
+  flex: 1;
+  min-width: 120px;
+  text-align: center;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.tab.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+/* ---------- Table ---------- */
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.maintenance-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.maintenance-table th,
+.maintenance-table td {
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+.maintenance-table th {
+  background: #f8fafc;
+  font-weight: 600;
+  color: #444;
+}
+
+.status-tag {
+  padding: 0.3rem 0.6rem;
+  border-radius: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.status-tag.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.status-tag.in_progress {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.status-tag.fixed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.complete-btn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.4rem;
+  border: none;
+  background: #16a34a;
+  color: white;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.complete-btn:hover {
+  background: #15803d;
+}
+
+/* ---------- Modal Overlay ---------- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(17, 24, 39, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* ---------- Modal ---------- */
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  position: relative;
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal h3 {
+  margin-bottom: 1.2rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  text-align: center;
+}
+
+.close-btn {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #374151;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: #e5e7eb;
+}
+
+/* ---------- Form Styling ---------- */
+.maintenance-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.maintenance-form label {
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.maintenance-form input,
+.maintenance-form select {
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.maintenance-form input:focus,
+.maintenance-form select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+/* ---------- Form Buttons ---------- */
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.cancel-btn,
+.save-btn {
+  flex: 1;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancel-btn {
+  background: #f3f4f6;
+  color: #374151;
+  margin-right: 0.5rem;
+}
+
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+.save-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.save-btn:hover {
+  background: #1d4ed8;
+}
+
+/* ---------- Responsive Table ---------- */
+@media (max-width: 768px) {
+  .maintenance-table thead {
+    display: none;
+  }
+
+  .maintenance-table,
+  .maintenance-table tbody,
+  .maintenance-table tr,
+  .maintenance-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .maintenance-table tr {
+    background: #fff;
+    margin-bottom: 1rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+  }
+
+  .maintenance-table td {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 1rem;
+    border: none;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .maintenance-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .maintenance-table td:last-child {
+    border-bottom: none;
+  }
+}

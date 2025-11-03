@@ -1,0 +1,42 @@
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.icon-wrap {
+  padding: 0.75rem;
+  border-radius: 50%;
+  color: white;
+}
+
+.bg-blue {
+  background: #016fb8;
+}
+
+.bg-green {
+  background: #2e8b57;
+}
+
+.bg-yellow {
+  background: #e0b100;
+}
+
+.bg-red {
+  background: #d9534f;
+}
