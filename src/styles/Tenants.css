@@ -150,3 +150,17 @@
   border-radius: 6px;
   cursor: pointer;
 }
+.tenants-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+  gap: 1rem;
+}
+
+.tenant-card {
+  padding: 1rem;
+}
+
+/* Modal form fields full width */
+.form-group input {
+  width: 100%;
+}

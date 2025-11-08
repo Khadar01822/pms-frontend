@@ -6,6 +6,7 @@ import Apartments from "./pages/Apartments";
 import Tenants from "./pages/Tenants";
 import Payments from "./pages/Payments";
 import Maintenance from "./pages/Maintenance";
+import "./styles/responsive.css";
 
 function App() {
   return (

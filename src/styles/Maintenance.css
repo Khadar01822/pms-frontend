@@ -311,3 +311,16 @@
     border-bottom: none;
   }
 }
+/* Stack tabs on mobile */
+@media (max-width: 768px) {
+  .tabs {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* Fix table */
+.maintenance-page .table-container {
+  overflow-x: auto;
+  width: 100%;
+}

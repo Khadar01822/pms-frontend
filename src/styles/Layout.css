@@ -1,0 +1,51 @@
+.layout {
+  display: flex;
+}
+
+/* MAIN CONTENT */
+.main-area {
+  flex: 1;
+  min-height: 100vh;
+  margin-left: 240px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top header */
+.topbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1rem;
+  background: #ffffff;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-btn {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* PAGE CONTENT */
+.page-content {
+  padding: 1rem;
+}
+
+/* ✅ MOBILE */
+@media (max-width: 768px) {
+  .main-area {
+    margin-left: 0;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+
+  .topbar h1 {
+    font-size: 1.2rem;
+  }
+}

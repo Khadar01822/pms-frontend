@@ -330,3 +330,27 @@
   border-radius: 6px;
   cursor: pointer;
 }
+/* Cards stack smoothly */
+.apartments-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+}
+
+/* Apartment card spacing */
+.apartment-card {
+  padding: 1rem;
+}
+
+/* Form stacked full width */
+.add-apartment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.add-apartment-form input,
+.add-apartment-form select {
+  width: 100%;
+}
+

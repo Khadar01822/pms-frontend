@@ -40,3 +40,16 @@
 .bg-red {
   background: #d9534f;
 }
+.cards-grid {
+  display: grid;
+  gap: 1.2rem;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+}
+
+/* ensure card spacing */
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
