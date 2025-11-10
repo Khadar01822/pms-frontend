@@ -4,23 +4,32 @@ import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import "./Layout.css";
 
-
 const Layout = () => {
   const [collapsed, setCollapsed] = useState(false);
+
+  // Toggle sidebar
+  const toggleSidebar = () => {
+    setCollapsed((prev) => !prev);
+  };
 
   return (
     <div className={`app-layout ${collapsed ? "sidebar-collapsed" : ""}`}>
       {/* Sidebar */}
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
 
-      {/* Main section */}
+      {/* MAIN AREA */}
       <div className="main-wrapper">
-        {/* Top Bar */}
-        <div className="topbar">
-          <h1 className="topbar-title">Salah Apartments</h1>
-        </div>
+        {/* ✅ TOP BAR */}
+        <header className="topbar">
+          {/* ✅ Mobile menu button */}
+          <button className="menu-btn" onClick={toggleSidebar}>
+            ☰
+          </button>
 
-        {/* Page Content */}
+          <h1 className="topbar-title">Salah Apartments</h1>
+        </header>
+
+        {/* PAGE CONTENT */}
         <main className="page-content">
           <Outlet />
         </main>

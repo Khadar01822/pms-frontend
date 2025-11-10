@@ -20,11 +20,14 @@
   padding: 0 1rem;
   background: #ffffff;
   border-bottom: 1px solid #ddd;
+  position: sticky;
+  top: 0;
+  z-index: 15;
 }
 
 .menu-btn {
   display: none;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   background: none;
   border: none;
   cursor: pointer;
@@ -35,7 +38,7 @@
   padding: 1rem;
 }
 
-/* ✅ MOBILE */
+/* ✅ MOBILE FIX */
 @media (max-width: 768px) {
   .main-area {
     margin-left: 0;
@@ -48,4 +51,33 @@
   .topbar h1 {
     font-size: 1.2rem;
   }
+}
+/* ✅ Mobile behavior */
+@media (max-width: 768px) {
+  /* Always show button */
+  .menu-btn {
+    display: block !important;
+    font-size: 1.6rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 10px;
+  }
+
+  /* When sidebar is collapsed — allow button to be clickable */
+  .sidebar-collapsed .menu-btn {
+    display: block !important;
+  }
+
+  /* Topbar layout */
+  .topbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+}
+
+/* Hide menu button on desktop */
+.menu-btn {
+  display: none;
 }
