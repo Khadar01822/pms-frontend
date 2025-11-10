@@ -36,35 +36,48 @@ export default function Apartments() {
     }
   };
 
-  const handleAdd = async (e) => {
+  // =======================
+  // ADD UNIT
+  // =======================
+  const handleAddUnit = async (e) => {
     e.preventDefault();
-    if (!unit || !floor || !rent) return toast.error("Please fill in all fields");
+    if (!unit || !floor || !rent) return toast.error("Please fill all fields");
 
     try {
       const res = await api.post("/apartments", { unit, floor, rent, status });
       setApartments([...apartments, res.data]);
       toast.success("Unit added successfully");
+
+      // Reset form
       setUnit("");
       setFloor("");
       setRent("");
       setStatus("vacant");
       setShowForm(false);
-    } catch {
-      toast.error("Failed to add unit");
+    } catch (err) {
+      console.error(err.response?.data || err);
+      toast.error(err.response?.data?.message || "Failed to add unit");
     }
   };
 
+  // =======================
+  // DELETE UNIT
+  // =======================
   const handleDelete = async (id) => {
-    if (!window.confirm("Are you sure?")) return;
+    if (!window.confirm("Are you sure you want to delete this unit?")) return;
+
     try {
       await api.delete(`/apartments/${id}`);
       setApartments(apartments.filter((apt) => apt._id !== id));
       toast.success("Unit deleted");
     } catch {
-      toast.error("Delete failed");
+      toast.error("Failed to delete unit");
     }
   };
 
+  // =======================
+  // OPEN TENANT FORM
+  // =======================
   const handleOpenTenantForm = async (apt) => {
     try {
       if (!apt?._id) {
@@ -80,25 +93,31 @@ export default function Apartments() {
     }
   };
 
+  // =======================
+  // ADD TENANT TO UNIT
+  // =======================
   const handleTenantSubmit = async (e) => {
     e.preventDefault();
     const { name, phone, email, idNumber, moveInDate } = tenantForm;
+
     if (!name || !phone || !idNumber || !moveInDate) return toast.error("Please fill all tenant details");
     if (!selectedUnit?._id) return toast.error("Apartment not found");
 
     try {
-      await api.put(`/apartments/${selectedUnit._id}/tenant`, { name, phone, email, idNumber, moveInDate });
+      await api.post(`/apartments/${selectedUnit._id}/tenant`, { name, phone, email, idNumber, moveInDate });
       toast.success("Tenant added successfully");
       setShowTenantModal(false);
       setTenantForm({ name: "", phone: "", email: "", idNumber: "", moveInDate: "" });
       fetchApartments();
-    } catch {
-      toast.error("Failed to add tenant");
+    } catch (err) {
+      console.error(err.response?.data || err);
+      toast.error(err.response?.data?.message || "Failed to add tenant");
     }
   };
 
   return (
     <div className="page-content fade-in">
+      {/* ===================== ADD UNIT FORM ===================== */}
       <div className="add-apartment-card">
         <button onClick={() => setShowForm(!showForm)} className="add-apartment-btn">
           <PlusCircle size={20} />
@@ -107,7 +126,7 @@ export default function Apartments() {
         </button>
 
         {showForm && (
-          <form onSubmit={handleAdd} className="add-apartment-form">
+          <form onSubmit={handleAddUnit} className="add-apartment-form">
             <input type="text" placeholder="Unit (e.g. 4A)" value={unit} onChange={(e) => setUnit(e.target.value)} />
             <input type="number" placeholder="Floor" value={floor} onChange={(e) => setFloor(e.target.value)} />
             <input type="number" placeholder="Rent" value={rent} onChange={(e) => setRent(e.target.value)} />
@@ -120,6 +139,7 @@ export default function Apartments() {
         )}
       </div>
 
+      {/* ===================== APARTMENTS GRID ===================== */}
       <div className="apartments-grid">
         {defaultUnits.map((unitName) => {
           const apt = apartments.find((a) => a.unit === unitName);
@@ -140,8 +160,18 @@ export default function Apartments() {
               </div>
               {apt && (
                 <div className="card-actions">
-                  <button onClick={(e) => { e.stopPropagation(); handleOpenTenantForm(apt); }} className="edit-btn"><Edit2 size={16} /></button>
-                  <button onClick={(e) => { e.stopPropagation(); handleDelete(apt._id); }} className="delete-btn"><Trash2 size={16} /></button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleOpenTenantForm(apt); }}
+                    className="edit-btn"
+                  >
+                    <Edit2 size={16} />
+                  </button>
+                  <button
+                    onClick={(e) => { e.stopPropagation(); handleDelete(apt._id); }}
+                    className="delete-btn"
+                  >
+                    <Trash2 size={16} />
+                  </button>
                 </div>
               )}
             </div>
@@ -149,18 +179,19 @@ export default function Apartments() {
         })}
       </div>
 
+      {/* ===================== TENANT MODAL ===================== */}
       {showTenantModal && (
         <div className="modal-backdrop" onClick={() => setShowTenantModal(false)}>
           <div className="tenant-modal" onClick={(e) => e.stopPropagation()}>
             <h3>Add Tenant for {selectedUnit?.unit}</h3>
             <form onSubmit={handleTenantSubmit} className="tenant-form">
-              {["name","phone","email","idNumber","moveInDate"].map((field) => (
+              {["name", "phone", "email", "idNumber", "moveInDate"].map((field) => (
                 <input
                   key={field}
                   type={field === "moveInDate" ? "date" : "text"}
                   placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
                   value={tenantForm[field]}
-                  onChange={(e) => setTenantForm({...tenantForm,[field]:e.target.value})}
+                  onChange={(e) => setTenantForm({ ...tenantForm, [field]: e.target.value })}
                 />
               ))}
               <div className="modal-actions">
